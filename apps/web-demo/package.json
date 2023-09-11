@@ -1,5 +1,5 @@
 {
-  "name": "my-webpack-project",
+  "name": "web-demo",
   "version": "1.0.0",
   "description": "My webpack project",
   "main": "index.js",
@@ -15,6 +15,7 @@
   "author": "",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@wasm-tool/wasm-pack-plugin": "^1.7.0",
     "@webpack-cli/generators": "^3.0.7",
     "autoprefixer": "^10.4.15",
     "css-loader": "^6.8.1",

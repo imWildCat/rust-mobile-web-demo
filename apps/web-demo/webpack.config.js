@@ -3,6 +3,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
+const webpack = require('webpack');
 
 const isProduction = process.env.NODE_ENV == 'production';
 
@@ -10,9 +12,11 @@ const isProduction = process.env.NODE_ENV == 'production';
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 
 
-
 const config = {
     entry: './src/index.ts',
+    experiments: {
+        asyncWebAssembly: true,
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
     },
@@ -27,6 +31,15 @@ const config = {
 
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+        new WasmPackPlugin({
+            crateDirectory: path.resolve(__dirname, "../../shared_lib_web")
+        }),
+        // Have this example work in Edge which doesn't ship `TextEncoder` or
+        // `TextDecoder` at this time.
+        new webpack.ProvidePlugin({
+          TextDecoder: ['text-encoding', 'TextDecoder'],
+          TextEncoder: ['text-encoding', 'TextEncoder']
+        }),
     ],
     module: {
         rules: [
@@ -56,10 +69,10 @@ const config = {
 module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
-        
+
         config.plugins.push(new MiniCssExtractPlugin());
-        
-        
+
+
     } else {
         config.mode = 'development';
     }
