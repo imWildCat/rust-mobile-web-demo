@@ -3,7 +3,12 @@ name = "shared_lib"
 version = "0.1.0"
 edition = "2021"
 
-
+[lib]
+crate-type = [
+  "staticlib", # must for iOS
+  "rlib",
+  "cdylib",    # must for Android
+]
 
 [dependencies]
 uniffi = { workspace = true }
