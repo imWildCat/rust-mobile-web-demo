@@ -1,4 +1,5 @@
 pub fn add(left: i32, right: i32) -> i32 {
+    println!("[rust] add({}, {})", left, right);
     left + right
 }
 
