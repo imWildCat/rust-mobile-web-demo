@@ -1,5 +1,5 @@
 [package]
-name = "shared_lib"
+name = "sharedlib"
 version = "0.1.0"
 edition = "2021"
 

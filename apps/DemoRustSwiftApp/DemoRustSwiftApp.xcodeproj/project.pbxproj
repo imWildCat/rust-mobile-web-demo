@@ -11,6 +11,8 @@
 		7270E43F2AAFCC08005003B7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7270E43E2AAFCC08005003B7 /* ContentView.swift */; };
 		7270E4412AAFCC0C005003B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7270E4402AAFCC0C005003B7 /* Assets.xcassets */; };
 		7270E4442AAFCC0C005003B7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7270E4432AAFCC0C005003B7 /* Preview Assets.xcassets */; };
+		72A8A3342AAFD24E003F0E75 /* SharedLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A8A3312AAFD24E003F0E75 /* SharedLib.swift */; };
+		72BCEB112AAFCEF700B73DC0 /* libsharedlib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 72BCEB102AAFCEF700B73DC0 /* libsharedlib.a */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,7 +21,10 @@
 		7270E43E2AAFCC08005003B7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7270E4402AAFCC0C005003B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7270E4432AAFCC0C005003B7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7270E44B2AAFCCAC005003B7 /* libshared_lib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libshared_lib.a; path = "../../target/aarch64-apple-ios-sim/debug/libshared_lib.a"; sourceTree = "<group>"; };
+		72A8A3312AAFD24E003F0E75 /* SharedLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedLib.swift; path = ../../../shared_lib/tmp/SharedLib.swift; sourceTree = "<group>"; };
+		72A8A3322AAFD24E003F0E75 /* SharedLibFFI.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; name = SharedLibFFI.modulemap; path = ../../../shared_lib/tmp/SharedLibFFI.modulemap; sourceTree = "<group>"; };
+		72A8A3332AAFD24E003F0E75 /* SharedLibFFI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedLibFFI.h; path = ../../../shared_lib/tmp/SharedLibFFI.h; sourceTree = "<group>"; };
+		72BCEB102AAFCEF700B73DC0 /* libsharedlib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsharedlib.a; path = "../../target/aarch64-apple-ios-sim/debug/libsharedlib.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72BCEB112AAFCEF700B73DC0 /* libsharedlib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +79,7 @@
 		7270E44A2AAFCCAC005003B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7270E44B2AAFCCAC005003B7 /* libshared_lib.a */,
+				72BCEB102AAFCEF700B73DC0 /* libsharedlib.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -81,6 +87,9 @@
 		7270E44D2AAFCCC0005003B7 /* GeneratedViaUniffi */ = {
 			isa = PBXGroup;
 			children = (
+				72A8A3312AAFD24E003F0E75 /* SharedLib.swift */,
+				72A8A3332AAFD24E003F0E75 /* SharedLibFFI.h */,
+				72A8A3322AAFD24E003F0E75 /* SharedLibFFI.modulemap */,
 			);
 			name = GeneratedViaUniffi;
 			sourceTree = "<group>";
@@ -155,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72A8A3342AAFD24E003F0E75 /* SharedLib.swift in Sources */,
 				7270E43F2AAFCC08005003B7 /* ContentView.swift in Sources */,
 				7270E43D2AAFCC08005003B7 /* DemoRustSwiftAppApp.swift in Sources */,
 			);
@@ -292,10 +302,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../target/aarch64-apple-ios-sim/debug";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.DemoRustSwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -320,10 +332,12 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/../../target/aarch64-apple-ios-sim/debug";
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.DemoRustSwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
