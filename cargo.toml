@@ -4,6 +4,7 @@ default-members = ["shared_lib"]
 
 members = [
     "./shared_lib",
+    "./shared_lib_web",
     "./uniffi-bindgen",
 ]
 
