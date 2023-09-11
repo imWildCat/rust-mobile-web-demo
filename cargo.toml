@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+default-members = ["shared_lib"]
+
+members = [
+    "./shared_lib",
+    "./uniffi-bindgen",
+]
+
+[workspace.dependencies]
+uniffi = "0.24.3"
+
+[workspace.build-dependencies]
+uniffi = { version = "0.24.3", features = ["build", "cli"] }
