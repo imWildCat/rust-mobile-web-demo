@@ -1,4 +1,4 @@
-pub fn add(left: u32, right: u32) -> u32 {
+pub fn add(left: i32, right: i32) -> i32 {
     left + right
 }
 
