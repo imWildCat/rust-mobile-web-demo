@@ -4,7 +4,6 @@ pub fn add(left: i32, right: i32) -> i32 {
 
 uniffi::include_scaffolding!("shared_lib");
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
