@@ -58,3 +58,6 @@ Open `apps/DemoRustSwiftApp/DemoRustSwiftApp.xcodeproj` and run the app.
 cd apps/web-demo && pnpm install && pnpm run build && pnpm run serve
 ```
 
+## License
+
+MIT
