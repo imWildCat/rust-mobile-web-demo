@@ -13,6 +13,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.rustkotlindemo.ui.theme.RustKotlinDemoTheme
 
 class MainActivity : ComponentActivity() {
+    init {
+        System.loadLibrary("sharedlib")
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

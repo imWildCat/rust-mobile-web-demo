@@ -1,8 +1,19 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    // uniffi change START: (<https://github.com/mozilla/rust-android-gradle>)
+//    id "org.mozilla.rust-android-gradle.rust-android" version "0.9.3" // in project-level build.gradle
 }
-
+apply plugin: 'org.mozilla.rust-android-gradle.rust-android'
+cargo {
+    module  = "$projectDir/../../../shared_lib"       // Or whatever directory contains your Cargo.toml
+    libname = "sharedlib"          // Or whatever matches Cargo.toml's [package] name.
+    targets = ["x86_64", "arm64", "x86", "arm"] // Could also include x86, arm, etc. (Whatever supported by rust)
+    profile = 'debug'
+    pythonCommand = 'python3'
+    targetDirectory = "$projectDir/../../../target"
+}
+// uniffi change END
 android {
     namespace 'com.example.rustkotlindemo'
     compileSdk 33
@@ -63,4 +74,5 @@ dependencies {
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
+    implementation "net.java.dev.jna:jna:5.7.0@aar"
 }
