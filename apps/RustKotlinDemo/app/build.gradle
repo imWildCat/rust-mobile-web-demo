@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    // uniffi change START: (<https://github.com/mozilla/rust-android-gradle>)
+    // [uniffi change] START: (<https://github.com/mozilla/rust-android-gradle>)
 //    id "org.mozilla.rust-android-gradle.rust-android" version "0.9.3" // in project-level build.gradle
 }
 apply plugin: 'org.mozilla.rust-android-gradle.rust-android'
@@ -13,7 +13,7 @@ cargo {
     pythonCommand = 'python3'
     targetDirectory = "$projectDir/../../../target"
 }
-// uniffi change END
+// [uniffi change] END
 android {
     namespace 'com.example.rustkotlindemo'
     compileSdk 33
@@ -74,5 +74,8 @@ dependencies {
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
-    implementation "net.java.dev.jna:jna:5.7.0@aar"
+    // [uniffi change] START: (<
+    implementation "net.java.dev.jna:jna:5.7.0@aar" // we need this for Java Native Access
+    // Reference: <https://mozilla.github.io/uniffi-rs/kotlin/gradle.html#jna-dependency>
+    // [uniffi change] END
 }

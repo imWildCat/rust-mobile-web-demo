@@ -58,6 +58,12 @@ Open `apps/DemoRustSwiftApp/DemoRustSwiftApp.xcodeproj` and run the app.
 cd apps/web-demo && pnpm install && pnpm run build && pnpm run serve
 ```
 
+## Misc
+
+### Enabling Rust breakpioints in Xcode
+
+<https://github.com/BrainiumLLC/rust-xcode-plugin>
+
 ## License
 
 MIT
