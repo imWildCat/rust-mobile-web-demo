@@ -341,7 +341,7 @@ private fun findLibraryName(componentName: String): String {
     if (libOverride != null) {
         return libOverride
     }
-    return "uniffi_SharedLib"
+    return "sharedlib"
 }
 
 private inline fun <reified Lib : Library> loadIndirect(
